@@ -40,8 +40,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);
 			if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+				UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 						userDetails, userDetails.getAuthorities());
 				usernamePasswordAuthenticationToken
